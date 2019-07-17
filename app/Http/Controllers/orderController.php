@@ -45,16 +45,18 @@ class orderController extends Controller
          if($user->password != $request->get('password')){
             return redirect()->back();
         }
+      
 
         $order = new Orders();
-        $order->customer_id = $user->get('id');
+        $order->customer_id = $user->id;
         $order->title = $request->get('title');
-        $order->description = $request->get('price');
+        $order->description = $request->get('description');
         $order->deadline = $request->get('deadline');
+        $order->price = $request->get('price');
         $order->save();
 
         return redirect()->route('order.index');
-        }
+     }
 
 
     /**
@@ -65,7 +67,8 @@ class orderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Orders::find($id);
+        return view('showOrder')->with('order',$order);
     }
 
     /**

@@ -19,3 +19,7 @@ Route::post('/verify','Controller@verify');
 Route::resource('/order','orderController');
 
 Route::resource('/user','userController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

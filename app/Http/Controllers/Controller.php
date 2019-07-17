@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\User;
+use App\Orders;
 use Illuminate\Http\Request;
 class Controller extends BaseController
 {
@@ -24,12 +25,16 @@ class Controller extends BaseController
     
     }
 
-    public function verify(Request $request){
+    public function activate(Request $request){
 
         $user = User::where('name',$request->get('name'))->first();
        if($user==NULL){
             return redirect()->back();
         }
+        if($user->role == 0){
+            return redirect()->back();
+        }
+
       
        
     }
