@@ -38,17 +38,9 @@ class orderController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::where('name',$request->get('name'))->first();
-        if($user==NULL){
-             return redirect()->back();
-         }
-         if($user->password != $request->get('password')){
-            return redirect()->back();
-        }
-      
-
+    
         $order = new Orders();
-        $order->customer_id = $user->id;
+        $order->customer_id = auth()->user()->id;
         $order->title = $request->get('title');
         $order->description = $request->get('description');
         $order->deadline = $request->get('deadline');
