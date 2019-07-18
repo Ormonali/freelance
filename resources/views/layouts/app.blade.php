@@ -36,7 +36,7 @@
                     @if(!empty(Auth::user()))
                         @if(Auth::user()->role==0)
                         <div class="createOrders">
-                            <a href="order/create" class="btn btn-outline-primary">Make order</a>
+                            <a href="/order/create" class="btn btn-outline-primary">Make order</a>
                         </div>
                         @endif
                     @endif

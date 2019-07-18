@@ -41,6 +41,8 @@ class orderController extends Controller
     
         $order = new Orders();
         $order->customer_id = auth()->user()->id;
+        $order->freelancer_id = 0;
+        $order->active=0;
         $order->title = $request->get('title');
         $order->description = $request->get('description');
         $order->deadline = $request->get('deadline');
@@ -71,7 +73,8 @@ class orderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Orders::find($id);
+        return view('editOrder')->with('order',$order);
     }
 
     /**
@@ -83,7 +86,13 @@ class orderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Orders::find($id);
+        $order->title = $request->get('title');
+        $order->description = $request->get('description');
+        $order->deadline = $request->get('deadline');
+        $order->price = $request->get('price');
+        $order->save();
+        return redirect()->route('order.index');
     }
 
     /**
@@ -94,6 +103,8 @@ class orderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Orders::find($id);
+        $order->delete();
+        return redirect()->route('order.index');
     }
 }
