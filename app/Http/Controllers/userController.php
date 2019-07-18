@@ -36,14 +36,17 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
+        $token = Str::random(60);
         $user = new User();
         $user->name = $request->get('name');
         $user->password = $request->get('password');
+        $user->api_token = hash('sha256', $token);
         $user->balance = $request->get('balance');
         $user->role = $request->get('role');
         $user->save();
         $user = $user->get('id');
         return redirect()->route('order.index');
+        
 
     }
 
