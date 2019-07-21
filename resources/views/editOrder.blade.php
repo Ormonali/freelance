@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Edit Order') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/order/{{$order->id}}">
+                    <form method="POST" action="/api/order/{{$order->id}}">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">

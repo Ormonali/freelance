@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="/user" method="post">
+<form action="/api/user" method="post">
     @csrf
     <input type="text" placeholder="name: " name="name">
     <input type="text" placeholder="password: " name="password">

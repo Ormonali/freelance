@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','orderController@index');
-
-Route::resource('/order','orderController');
-
+Route::get('/',function(){
+	return view('home');
+})->middleware('guest');
 Auth::routes();
-

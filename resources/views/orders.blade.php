@@ -11,7 +11,7 @@
             <p>Description: {{$order->description}}</p>
             <p>Deadline: {{$order->deadline}}</p>
             <p>Price: {{$order->price}}</p>
-            <a href="order/{{$order->id}}">Read more</a>
+            <a href="api/order/{{$order->id}}">Read more</a>
         </div>
         <br>
     @endforeach

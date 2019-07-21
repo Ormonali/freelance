@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/order';
+    protected $redirectTo = '/api/order';
 
     /**
      * Create a new controller instance.
@@ -51,7 +51,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required', 'integer'],
-            'balance' => ['required', 'integer'],            
+            'balance' => 'required',            
             'password' => ['required', 'string', 'min:1', 'confirmed'],
         ]);
     }

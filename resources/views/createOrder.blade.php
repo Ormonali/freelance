@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Make Order') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/order">
+                    <form method="POST" action="/api/order">
                         @csrf
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('title') }}</label>
