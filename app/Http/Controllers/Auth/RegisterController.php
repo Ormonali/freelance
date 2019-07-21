@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/api/order';
+    protected $redirectTo = 'orders';
 
     /**
      * Create a new controller instance.
@@ -69,6 +70,7 @@ class RegisterController extends Controller
             'role' => $data['role'],
             'balance' => $data['balance'],
             'password' => Hash::make($data['password']),
+            'api_token'=>Str::random(60),
         ]);
     }
 }

@@ -16,11 +16,7 @@ use Illuminate\Http\Request;
 /*Route::middleware('')->get('/user', function (Request $request) {
     return $request->user();
 });*/
-
-Route::middleware('auth:api')->group(function () {
-	Route::resource('/order','orderController');
-});
-
+Route::resource('/order','orderController')->middleware('auth');
 
 
 
